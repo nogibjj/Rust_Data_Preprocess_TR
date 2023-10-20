@@ -13,3 +13,5 @@ clap = { version = "4.3.17", features = ["derive"] }
 assert_cmd = "^2.0"
 tempdir = "0.3"
 predicates = "0.9"
+csv = "1.1"
+dataframe = "0.15"
