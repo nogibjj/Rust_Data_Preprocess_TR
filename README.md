@@ -37,6 +37,7 @@ CPU Usage: 1.70%
 Memory Usage: 45.65456%
 Elapsed time: 454.6ms
 
+Rust exhibits lower CPU usage compared to Python due to its compiled nature, fine-grained memory management, static typing, and efficient support for concurrency, which collectively result in optimized and performant code execution. Python, being an interpreted language with automatic memory management and a Global Interpreter Lock (GIL) in multi-threaded scenarios, tends to have higher CPU usage, particularly in CPU-bound tasks. However, the choice between Rust and Python should consider the specific requirements of the task, as Python's rich ecosystem and ease of use make it a valuable choice for many applications, while Rust excels in performance-critical and systems programming scenarios.
 
 ## References
 
