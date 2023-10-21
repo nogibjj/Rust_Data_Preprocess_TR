@@ -1,4 +1,10 @@
 # Week 8: Rewrite a Python Script in Rust
+
+[![Rust CI/CD](https://github.com/nogibjj/Rust_Data_Preprocess_TR/actions/workflows/RustCI.yml/badge.svg)](https://github.com/nogibjj/Rust_Data_Preprocess_TR/actions/workflows/RustCI.yml)
+
+[![Python CI/CD](https://github.com/nogibjj/Rust_Data_Preprocess_TR/actions/workflows/PythonCI.yml/badge.svg)](https://github.com/nogibjj/Rust_Data_Preprocess_TR/actions/workflows/PythonCI.yml)
+
+
 ## Overview
 In the project, we take an existing Python script for data processing, which can get the median of a dataset, and rewrite it in Rust. Here, we also record their run times and highlight improvements in speed and resource usage. 
 
