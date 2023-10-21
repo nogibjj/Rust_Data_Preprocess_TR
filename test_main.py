@@ -1,4 +1,5 @@
-from mylib.lib import get_median
+# from mylib.lib import get_median
+from main import median_1
 import pandas as pd
 import time
 import psutil
@@ -10,9 +11,9 @@ def test_get_median():
 
     example_csv = "Electric_Vehicle_Population_Data.csv"
     df = pd.read_csv(example_csv)
-    print(get_median(df["Electric Range"]))
+    print(median_1(df["Electric Range"]))
 
-    assert get_median(df["Electric Range"]) == 19.0
+    assert median_1(df["Electric Range"]) == 19.0
     end_time = time.time()
     # Calculate the elapsed time
     elapsed_time = end_time - start_time

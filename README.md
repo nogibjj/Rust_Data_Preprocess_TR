@@ -3,6 +3,9 @@
 In the project, we take an existing Python script for data processing, which can get the median of a dataset, and rewrite it in Rust. Here, we also record their run times and highlight improvements in speed and resource usage. 
 
 ## Rust
+### Introduction
+The code consists of two Rust source files, lib.rs and main.rs, designed for data analysis and performance monitoring. In lib.rs, there is a function called calculate_median that calculates the median of a vector of floating-point values. It first clones the input vector, sorts the clone, and then calculates the median based on the sorted values. In main.rs, the code focuses on monitoring CPU usage, reading data from a CSV file, calculating the electric vehicle range median using the calculate_median function from lib.rs, and tracking memory usage and elapsed time. It leverages external crates like csv for CSV parsing and sys_info for memory information. The ps command is used to obtain the CPU usage of the current process, and the entire program provides a comprehensive example of utilizing Rust for data processing while monitoring system resource utilization. There is also a small error in the printed message, "ELetirc Range Median," which should be corrected to "Electric Range Median" for clarity.
+
 ### Preparation 
 1. create a codespace 
 2. build: using **cargo build** 
@@ -14,6 +17,9 @@ In the project, we take an existing Python script for data processing, which can
 3. test: make test 
 
 ## Python
+### Introduction
+The code serves the function of testing the correctness and performance of a Python function, median_1, which presumably calculates the median of a specific column in a CSV dataset. Its purpose is to validate that the calculated median matches an expected value (19.0) and to record essential performance metrics such as elapsed time, CPU usage, and memory usage. This testing framework helps ensure the accuracy and efficiency of the median_1 function when applied to real data, making it a valuable tool for verifying the reliability and resource utilization of this data analysis function in a broader project context.
+
 ### Preparation
 1. create a codespace 
 2. install required packages: make python_install 
