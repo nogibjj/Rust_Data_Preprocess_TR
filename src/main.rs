@@ -1,12 +1,28 @@
 extern crate csv;
+extern crate rust_tr; // Import your own crate
 
 use csv::ReaderBuilder;
 use rust_tr::calculate_median;
 use std::error::Error;
 use std::fs::File;
+use std::io::Write; // Added this import
 use std::process::Command;
 use std::time::Instant;
 use sys_info::mem_info;
+use std::fs::OpenOptions;
+
+fn record_to_md(file_name: &str, time: u128) -> Result<(), std::io::Error> {
+    let file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .append(true)
+        .open(file_name)?;
+
+    let mut file = std::io::BufWriter::new(file);
+
+    writeln!(file, "Elapsed time: {} microseconds\n\n", time)?;
+    Ok(())
+}
 
 fn main() -> Result<(), Box<dyn Error>> {
     let output = Command::new("ps")
@@ -29,7 +45,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     } else {
         println!("Failed to get CPU usage");
     }
-    let start_time = Instant::now();
     let csv_file = "Electric_Vehicle_Population_Data.csv"; // Update with your CSV file path
     let file = File::open(csv_file)?;
 
@@ -46,10 +61,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         range_values.push(range_v);
     }
 
+    let start_time = Instant::now();
     // Calculate and print the medians
     let range_median = calculate_median(&range_values);
 
-    println!("ELetirc Range Median: {}", range_median);
+    println!("Electric Range Median: {}", range_median); // Fixed the typo
 
     let end_time = Instant::now();
 
@@ -57,12 +73,16 @@ fn main() -> Result<(), Box<dyn Error>> {
     let elapsed_time = end_time.duration_since(start_time);
     let mem_info = mem_info().unwrap();
 
+    match record_to_md("rust_time.md", elapsed_time.as_micros()) {
+        Ok(_) => {}
+        Err(e) => println!("Error: {:?}", e),
+    }
+
     println!(
         "Memory Usage: {}%",
-        mem_info.total.saturating_sub(mem_info.avail) as f32 / mem_info.total as f32 * 100.0
+        (mem_info.total - mem_info.avail) as f32 / mem_info.total as f32 * 100.0
     );
     println!("Elapsed time: {:?}", elapsed_time);
-    // println!("Memory usage: {} bytes", std::mem::size_of::<f64>());
 
     Ok(())
 }
