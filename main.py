@@ -5,6 +5,7 @@ import pandas as pd
 
 lOG_FILE = "python_times.md"
 
+
 def log_encrypt(runtime):
     """adds to a query markdown file"""
 
