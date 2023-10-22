@@ -5,11 +5,11 @@ use csv::ReaderBuilder;
 use rust_tr::calculate_median;
 use std::error::Error;
 use std::fs::File;
+use std::fs::OpenOptions;
 use std::io::Write; // Added this import
 use std::process::Command;
 use std::time::Instant;
 use sys_info::mem_info;
-use std::fs::OpenOptions;
 
 fn record_to_md(file_name: &str, time: u128) -> Result<(), std::io::Error> {
     let file = OpenOptions::new()
